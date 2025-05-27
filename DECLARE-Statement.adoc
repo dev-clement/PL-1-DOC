@@ -1,0 +1,15 @@
+:toc:
+# DECLARE statement
+
+. `DECLARE` statement is used to specift an attribute of the variables
+
+### Examples
+
+```PL/1
+DECLARE NAME CHAR(20);
+NAME = 'mainframe tutorials'
+```
+We are declaring a variable called `NAME` of `CHAR(20)`. We can then initialize it with the value moved from the right hand side of the operand.
+
+Unused positions of the variable name are padded on the right with blanks. For example, we are declaring a `NAME` attribute of type `CHAR(20)` that means we set the value of `NAME` of 20 character, if you don't set it of 20 character, the rest will be set with `\0` character.
+

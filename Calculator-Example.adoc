@@ -1,0 +1,73 @@
+:toc:
+# Example: Simple Calculator in PL/I
+
+## Code:
+
+```PL/I
+CALCULATOR: PROCEDURE OPTIONS(MAIN);
+
+   DECLARE A, B, RESULT FLOAT BINARY;
+   DECLARE OPERATOR CHAR(1);
+
+   /* Get user input */
+   PUT SKIP LIST('Enter first number:');
+   GET LIST(A);
+
+   PUT SKIP LIST('Enter an operator (+, -, *, /):');
+   GET EDIT(OPERATOR) (A);
+
+   PUT SKIP LIST('Enter second number:');
+   GET LIST(B);
+
+   /* Perform operation */
+   IF OPERATOR = '+' THEN
+      RESULT = A + B;
+   ELSE IF OPERATOR = '-' THEN
+      RESULT = A - B;
+   ELSE IF OPERATOR = '*' THEN
+      RESULT = A * B;
+   ELSE IF OPERATOR = '/' THEN DO;
+      IF B = 0 THEN
+         PUT SKIP LIST('Error: Division by zero.');
+      ELSE
+         RESULT = A / B;
+   END;
+   ELSE
+      PUT SKIP LIST('Invalid operator.');
+
+   /* Display result if no error */
+   IF OPERATOR = '+' | OPERATOR = '-' | OPERATOR = '*' | (OPERATOR = '/' & B ¬= 0) THEN
+      PUT SKIP LIST('Result: ', RESULT);
+
+END CALCULATOR;
+```
+# Explanation:
+
+## Variables:
+
+* A, B: operands
+
+* RESULT: stores the result
+
+* OPERATOR: operator character input
+
+##Statements
+
+* GET / PUT: for interactive input/output
+
+* IF...ELSE: for operation branching
+
+* Division by zero check: included to avoid errors
+
+## Sample Run:
+
+```bash
+Enter first number:
+10
+Enter an operator (+, -, *, /):
+*
+Enter second number:
+5
+Result: 50.0
+```
+

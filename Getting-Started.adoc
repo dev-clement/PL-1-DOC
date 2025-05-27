@@ -1,0 +1,39 @@
+:toc:
+#PLI getting started guide
+
+## Definition of PL/I (Programming Language One)
+PL/I (pronounced P-L-one) is a high-level programming language developed by IBM in the 1960s to combine the features of both scientific and business programming languages. Its design incorporates capabilities from languages like FORTRAN, COBOL, and ALGOL, aiming to be a unified language suitable for a wide range of applications.
+
+It supports a wide range of programming paradigms, including:
+
+* Procedural programming
+* Structured programming
+* Exception handling
+* Concurrency (multitasking)
+
+## Key Characteristics of PL/I:
+* General-purpose: Designed for both scientific (numerical computation, data analysis) and business (data processing, report generation) tasks.
+
+* Strong typing: Supports various data types including complex numbers, character strings, fixed and floating-point numbers, and structures.
+
+* Rich control structures: Includes IF, DO, SELECT, and error-handling constructs.
+
+* Exception handling: One of the earliest languages to introduce structured error handling via ON units.
+
+* Concurrency: Built-in support for multitasking using TASK and EVENT statements (in some implementations).
+
+* Portability and Compatibility: Originally designed for IBM mainframes but has been implemented on other platforms too.
+
+## Example Use Cases:
+1. Banking systems
+
+2. Insurance and payroll applications
+
+3. Scientific simulations
+
+4. Government data processing
+
+5. Mainframe legacy systems
+
+## Summary:
+PL/I is a multi-purpose language that bridges the gap between scientific and business computing, offering advanced features for data processing, numerical analysis, and robust system programming, especially in IBM mainframe environments.

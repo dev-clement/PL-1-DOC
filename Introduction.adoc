@@ -1,0 +1,37 @@
+:toc:
+# PLI Introduction
+
+PL/I stands for Programming Language One. It is a structured programming language that is used in order to support scientific programming as well as business or data processing. It has been introduced by IBM in 1965. Very used by some company.
+
+## Features
+
+* It is a free flow language.
+* It supports pointers.
+* It is more faster than COBOL.
+* Subprograms and functions (also called procedure) it also has a main procedures that is basically a function.
+* It's also a general purpose language.
+* Supports exceptions handling
+* PROCEDURE is the first statement for the PL/I, compiler recognizes that it is the beggining block of the program.
+* OPTION(MAIN) is called the Main of the program. PROCEDURE or External Procedure
+* Every statement has to end with a ";"
+* Coding sheet: 
+**1 column is reserved by the OS**
+**`2-72` are used to write a statements !**
+**`73 - 80` used for sequence number by operating system.**
+
+## Simple program
+
+```
+ADD: PROCEDURE OPTIONS(MAIN);
+    GET LIST(INP1, INP2);
+    RESULT = INP1 + INP2;
+    PUT LIST('Sum of two numbers', RESULT);
+END
+```
+
+### Information about the PROCEDURE define above:
+
+1. `LIST` is a function that accepts inputs, basically used for retrieving value from the user (like the argv do)
+2. `GET` is a function that tells to retrieve the RHS side of the statement.
+
+Basically the PL/1 language is accepting dynamic storage, and then it will depends on the value you entered.

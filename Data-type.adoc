@@ -1,0 +1,81 @@
+:toc:
+# Data types
+
+[cols="1,1,1, 1"]
+|===
+|PL/1 data type, |Data format, |Storage, |Basic usage
+
+|FIXED DECIMAL
+|Packed Decimal
+|4 bits/decimal digit, sign
+|Arithmetic Operations
+
+|FIXED BINARY
+|Fixed point
+|Half word or full word
+|Arithmetic Operations
+
+|Float decimal, Float binary
+|Floating Point
+|32, 64, 128 bits
+|Arithmetic Operations
+
+|PICTURE
+|Zoned Decimal
+|8 bits per digit
+|Numeric character
+
+|CHARACTER
+|Character
+|8 bits per character
+|Alphabetic character
+
+|BIT
+|Bit
+|One byte
+|Logical data
+|===
+
+## More details on data types
+
+. FIXED DECIMAL
+    * Default precision 5 decimal digits from 0 upto 99999
+    * Max precision 15 decimal digits from 0 upto 999.999.999.999.999
+    * Example: DECLARE PRICE FIXED DECIMAL(m, n)
+        ** `m` is th total number of digits including fractional digits
+        ** `n` number of fractional digits
+    * Example: DECLARE PRICE FIXED DECIMAL(5, 2) INIT(123.45)
+        ** `DECLARE` that is a PL/1 keyword
+        ** `PRICE` that is an identifier (variable)
+        ** `FIXED` is a scale attribute
+        ** `DECIMAL` is a base attribute
+        ** `5` being the precision of 5 digits
+        ** `2` is the precision of the decimal fraction.
+. FIXED BINARY
+    * Default precision 15 bits plus sign bit(decimal-32.767)
+    * Max precision 31 bits plus sign bit(decimal-2*31)
+    * Used for faster executions usually for integers.
+    * Example: `DCL MIN FIXED BIN(15);`
+        ** You are declaring `MIN` which is FIXED that is a `BIN` of `15` bit.
+    * Example: `DCL MAX FIXED BIN(31);`
+        ** You are declaring `MAX` which is FIXED that is a `BIN` of `31` bit.
+. FLOAT DECIMAL
+    * Default precision 6 decimal digits
+    * Max precision is 16 decimal digits
+    * Range of exponent from 10*-78 to 10*+75
+    * This data type is suitable for any scientific application as it can be more precise.
+    * Example: `DCL FORCE FLOAT DEC(6);`
+. BIT
+    * Default length none
+    * Max. length - 8000 bits for constants 32767 bits for variables.
+        ** Example:
+        *** `DCL YES BIT(1) INIT('1'B);` This declare a bit named `YES` of a value `'1'B`.
+        *** `DCL NO BIT(1) INIT('0'B);` This declare a bit named `NO` of a value `'0'B`.
+. CHARACTER
+    * Default length none
+    * Max. length 1000 characters for constants and 32767 characters for variables
+        ** Example:
+        *** `DECL DESCN CHAR(20);` We are declaring a variable of CHAR with 20 bit named `DESN`.
+        *** `DECL TITLE CHAR(15) INIT('Status report'); declaring a variable of `CHAR(15)` with value initialized at `Status report`.
+    
+    

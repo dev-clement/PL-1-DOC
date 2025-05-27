@@ -1,0 +1,35 @@
+:toc:
+# Conditional statement
+
+## If statement
+The if statement is used when a test or decision is to be made in the program. This if statement is using conditionnal operators like the followings:
+```PL/1
+GE or >=
+```
+The above example is a condition that can be used on an `if` statement, when you are verifying if LHS is greater or equal to the RHS.
+```PL/1
+GT or >
+```
+The above example is a condition that can be used on an `if` statement, when you are checking wether or not your LHS is greater than the RHS
+```PL/1
+LT or <
+```
+The above example is a condition that can be used on an `if` statement, when you are checking that whether or not your LHS is lesser than RHS
+```PL/1
+LE or <=
+```
+The above example is a condition that can be used on an `if` statement, when you are checking that whether or not you `LHS` is lesser than or equal to the `RHS`.
+
+### Example
+. Simple IF
+```PL/1
+IF A = B THEN PUT LIST('A = B');
+```
+. Compound IF
+```PL/1
+IF A = B THEN
+    X = 1;
+ELSE
+    X = 2;
+```
+

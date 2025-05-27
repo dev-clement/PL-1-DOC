@@ -1,0 +1,87 @@
+:toc:
+# PL/1 Format and rules
+
+## PL/1 Code
+
+A PL/1 code will use 80 columns from a line.
+
+* Column 1 is the column reserved by the OS, 
+* Column 2 - 72 PL/I statements
+* Column 73 - 80 is for sequence number or a comment
+
+All terminate statements of a PL/I end with a ";". The name affixed to the PROCEDURE statements is called a label. The label is separated from rest of the PL/I statement by colon a ":".
+
+## PL/1 IDENTIFIERS
+
+Identifier is the name given to,
+
+* DATA NAMES
+* FILE NAMES
+* PROCEDURE NAMES as a PL/1 language is basically made ot procedure, a procedure is nothing but a block of code that starts with 
+* LABELS PL/I 
+* STATEMENTS 
+* KEYWORDS
+
+## PL/1 CHARACTER SET
+
+### Extended alphabet of 29 characters
+
+* A-Z, @, #, $
+
+### 10 decimal digits
+
+* 0 - 9
+
+### 21 special characters
+
+* blank, =, +, -, *, /, (, ), `, %, ;, :, ., >, <, _, &, ?, not, or, ~, <=, >=
+
+#### Note: **do not code any blanks in-between**
+
+## Rules for naming data names, statement, labels and internal procedures
+
+* Maximum of 31 characters.
+* Alphabets of A-Z, @, #, $
+* Numeric digits of 0-9
+* First character has to be an alphabet
+
+#### Example of an IDENTIFIERS:
+
+* `RATE_OF_INTEREST`
+* `TOTAL_COUNT`
+* `EMPLOYEE_NUMBER`
+* `#_OF_LINES`
+
+### Comments in PL/1
+
+. Comments begins with a `/\*` and ends with `*/`
+For example:
+```PL/I
+/* My first hello world PL/I PROGRAM */
+```
+## PROCEDURES
+
+### A procedure is nothing than a simple block of code, first statement in a program is the procedure statement, for instance like a previous example:
+```
+ADDR: PROCEDURE OPTIONS(MAIN)
+```
+Here we can see the `ADDR` that is a label for the procedure, we know that is a label as it ends with a colon: ":" then the keyword PROCEDURE comes next. After the _PROCEDURE_ keyword, there will be an _OPTION_ that will be the name of the procedure, in the above example, the name of the options will be `Main` program. Although, _PROCEDURE_ can be written as _PROC_
+
+### Rules
+
+. Names of external procedures can have a maximum of 8 chatacters
+. `-, #, @` shouldn't be used while naming an external procedure
+. External procedure names are known to OS by PROCEDURE with OPTIONS(Main)
+. Internal procedures are nested within the external procedure
+. END statement is used to mark the end of the procedure.
+
+#### Example
+
+```
+ADD: PROCEDURE OPTIONS(MAIN);
+    GET LIST(INP1, INP2);
+    RESULT = INP1 + INP2;
+    PUT LIST('Sum of two numbers: ', RESULT);
+END ADD;
+```
+

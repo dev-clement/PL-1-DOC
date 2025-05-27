@@ -1,0 +1,112 @@
+:toc:
+# File handling
+
+File is nothing but a collection of rows and columns to store and retrieve data.
+
+## Programming steps
+
+. Define file
+
+. Open file
+
+. Read a file
+
+. Process information in the file
+
+. Close the file
+
+
+## File declaration
+
+. The set of records in the file or data set is referred to in a PL/1 program by a file name.
+
+. The file name may be 1 tp 8 characters long.
+
+## Exemples
+
+```PL/1
+DCL payroll FILE(other attributes);
+```
+
+In the above example, other attributes are:
+
+. Type of transmission (can be either `STREAM` or `RECORD`)
+
+. Direction of the transmission (`INPUT`, `OUTPUT`, `UPDATE`)
+
+. Physical environment `ENV(FBLKSIZE(80))` it can be mentioned in `JCL`.
+
+After specifying the above `other attributes` a file declaration will look like this:
+
+```PL/1
+DCL EMPFILE FILE INPUT STREAM ENV(F BLKSIZE(80));
+```
+In the above example, we are declaring the variable file as an input attribute.
+
+```PL/1
+DCL OUTFILE FILE OUTPUT STREAM ENV(F BLKSIZE(80));
+```
+In the above example, we are declaring an output file named `OUTFILE`.
+
+```PL/1
+DCL PRNTFILE FILE OUTPUT STREAM ENV(F BLKSIZE(80));
+```
+In the above example, we are declaring an output file named `PRNTFILE`.
+
+### List of directed I/O for a file
+
+```PL/1
+GET FILE(file_name) LIST(data_name);
+```
+In the example above, we are getting the content of the file specified as argument of the `GET FILE` procedure, and we are storing the content inside of the `LIST(data names)` with `data names` being the variable that will contain the content of the specified file.
+
+```PL/1
+GET FILE(file_name) EDIT(data_names);
+```
+In the example above, we are getting the content of the file specified as `file_name` in order to modify its content, that's why we are using the `EDIT` instead of `LIST`.
+
+```PL/1
+PUT FILE(file_name) LIST(data_names);
+```
+In the above example, we are writing the content of `data_names` inside of the `file_name`.
+
+### Open statement
+
+```PL/1
+OPEN FILE(file_name);
+```
+Using the `OPEN` above, we are opening the file specified as `file_name`
+
+```PL/1
+OPEN FILE(INFILE);
+```
+In the example above, we are opening the `INFILE` file as an input file.
+
+```PL/1
+OPEN FILE(INFILE, OUTFILE);
+```
+In the example above, we are opening a file as `INFILE` and also as an `OUTFILE`.
+
+Following attributes and options may be specified in the open statement:
+. STREAM or RECORD
+. INPUT or OUTPUT
+. LINESIZE (stream files having print)
+
+### Close statement
+
+```PL/1
+CLOSE FILE(file_name);
+```
+
+The above example is used to close the `file_name` file
+
+```PL/1
+CLOSE FILE(INFILE);
+```
+
+The above example is used to close the file with file name being `INFILE`.
+
+```PL/1
+CLOSE FILE(INFILE, OUTFILE);
+```
+The above example is to close a list of file, each parameter of the `CLOSE FILE` procedure will take a file name as parameter.

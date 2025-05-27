@@ -1,0 +1,67 @@
+:toc:
+# Decimal Fixed point constants
+
+. These consist of one or more decimal digits and optionally a decimal point.
+
+. If no decimal point appears, then data item is an integer.
+
+### Examples
+```PL/1
+125
+```
+
+In the example above, value is considers as an integer.
+
+```PL/1
+1.4567
+```
+
+In the example above, value is considers as a decimal point value.
+
+These above examples are also called decimal constants, but there is also floating point constants.
+
+# Decimal floating point constants
+
+. These consist of one decimal digits and optionally decimal point with an exponential notation.
+
+. If no decimal points appears then data item is an integer.
+
+### Examples
+
+```PL/1
+12.E+05
+```
+This value above is a floating point constants as it is using the exponential notation.
+
+```PL/1
+12E5
+```
+Same as before, the above example is using the exponential notation without any decimal point. Still as it is using exponential value, it is considered as a floating point constant.
+
+# Character string constants
+
+. `HELLO WORLD` this example is considered as a character string constant. Although we can make use of the repetition factor for string constants:
+
+```PL/1
+(2)'Hello'
+```
+The above example will result in `HELLO HELLO` character string constant.
+
+# BIT-STRING Constants
+
+. BIT-STRING constants is a series of binary digits enclosed in single quote marks and followed by the letter `B`.
+
+. These BIT-STRING is used as indicator or flag in a program. And can also be set to 1 or 0 for any flag or conditional statements.
+
+### Example
+
+```PL/1
+'1'B
+```
+
+The above example is setting the value '1' in bit-string constant.
+
+```PL/1
+'11111010111001'B
+(54)'0'B
+```

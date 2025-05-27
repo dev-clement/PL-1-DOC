@@ -1,0 +1,42 @@
+:toc:
+# SELECT statement
+
+Heads a `SELECT` group, which provides a multi-path conditional branch.
+
+The `SELECT` statement provides a practical alternative to coding of the case structure in which large number of alternatives must be evaluated.
+
+## Description
+
+The `SELECT` statement heads a `SELECTe`-group whih provides a multi-path conditional branch. The `SELECT` statement tests the expression in the `SELECT`-group and defines / performs a particular action if the result of any test is `true`, in modern programming language, this acts as a `switch` statement.
+
+## Example
+
+```PL/1
+SELECT;
+    WHEN (9 > B, C, D, FOUND) CALL PROC_1;
+    WHEN (A = B) CALL PROC_2;
+    OTHERWISE CALL PROC_3;
+END;
+```
+
+In the example above, the `select` expression is omitted, so each `WHEN` clause expression is evaluated and converted to bit string. The action after the `WHEN` clause is performed if any bit in any resulting string is a `1`.
+
+```PL/1
+DECLARE MONTH CHAR(3)
+    , YEAR PIC'99'
+    , NO_DAYS FIXED BINARY;
+.
+.
+.
+SELECT (MONTH);
+    WHEN ('FEB');
+        SELECT (MOD(YEAR, 4));
+            WHEN (0) NO_DAYS = 29;
+            OTHERWISE NO_DAYS = 28;
+        END;
+    WHEN ('APR', 'JUN', 'SEPT', 'NOV') NO_DAYS = 30;
+    OTHERWISE NO_DAYS = 31;
+END;
+```
+
+The previous example shows nested `SELECT`-groups used to set a variable to the number of days in a specified month. Here, the `MOD` built-in function returnes the remainder when YEAR is divided by 4. (The algorithm isn't correct for some century years though.)

@@ -1,0 +1,50 @@
+:toc:
+# Hands-On PL/I Example: Factorial Calculator
+
+## Code:
+
+```PL/I
+FACTORIAL: PROCEDURE OPTIONS(MAIN);
+
+   /* Variable declarations */
+   DECLARE N FIXED BIN(31);
+   DECLARE I FIXED BIN(31);
+   DECLARE RESULT FIXED BIN(31);
+
+   /* Ask user for input */
+   PUT SKIP LIST('Enter a positive integer:');
+   GET LIST(N);
+
+   /* Initialize result */
+   RESULT = 1;
+
+   /* Compute factorial */
+   DO I = 1 TO N;
+      RESULT = RESULT * I;
+   END;
+
+   /* Display the result */
+   PUT SKIP LIST('Factorial of ', N, ' is ', RESULT);
+
+END FACTORIAL;
+```
+
+## Step-by-Step Explanation:
+
+| Line                    | Description                            |
+|:-----------------------:|:--------------------------------------:|
+|`PROCEDURE OPTIONS(MAIN)`| Entry point of the program             |
+|`DECLARE N` statements   | Defines a variable `N`                 |
+|`PUT` and `GET`          | Print a prompt and receive user inputs |
+| `RESULT = 1`            | Initialize the variable `RESULT`       |
+|`DO I = 1 TO N;`         | Loop from 1 to `N`                     |
+|`PUT SKIP LIST`          | Print the result on a new line         |
+
+## Try It Out
+To run PL/I code, you usually need:
+
+1. A PL/I compiler (e.g., IBM Enterprise PL/I, Open PL/I for Linux).
+
+2. A mainframe or emulator (like Hercules for z/OS).
+
+If you're in a legacy environment or classroom setup with a PL/I system, you can paste this code into your environment and run it directly.

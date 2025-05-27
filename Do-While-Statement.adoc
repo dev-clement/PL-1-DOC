@@ -1,0 +1,52 @@
+:toc:
+# DO WHILE statement
+
+. The `WHILE` and `UNTIL` options make successive executions of a do-group dependent upon a specified condition
+
+Condider the following example:
+```PL/1
+do while (A = B);
+    /* */
+    ...
+end;
+```
+The example above is equivalent to the following statement:
+```PL/1
+S: if A=B then;
+    else goto R;
+        .
+        .
+        .
+        goto S;
+R: next statement
+```
+Then consider the following example:
+```PL/1
+do until(A = B);
+    .
+    .
+    .
+end;
+```
+The example above is equivalent to the following statement:
+```PL/1
+S:
+    .
+    .
+    .
+    if (A = B) then goto R;
+        goto S;
+R: next statement
+```
+
+In the absence of other options, a `do`-group headed by a `DO UNTIL` statement is executed at least once, but a `do`-group headed by a `DO WHILE` statement might not be executed at all.
+
+That is the statement `DO WHILE (A = B)` and `DO UNTIL (A = B)`; aren't equivalent.
+
+In the above example, if `A = B` when the `DO` statement is first encountered, the do-group is not executed at all.
+
+In the following example, the do-group is executed at least once, with `I` equal to 1:
+
+```PL/1
+do I = 1 to 10 until(Y = 1);
+```

@@ -1,0 +1,30 @@
+:toc:
+# Subroutines procedures
+
+A subroutines procedures is also known as a subprograms that is invoked by a `CALL` statement.
+
+Arguments are passed by means of an argument list. 
+
+Length of the procedure is limited to 8 characters.
+
+## Arguments and parameters
+
+* Arguments are passed to a called procedure must be accepted by that procedure
+
+* This is done by explicit declaration of one or more parameters in this parameter in a parenthesized list in the procedure statement of the invoked procedure.
+
+* The attributes of parameter and its corresponding argument must be the same.
+
+### Example
+
+```PL/1
+PROG: PROCEDURE OPTIONS(MAIN);
+    :
+    CALL SUBRT(A, B, C);
+    :
+END PROG;
+
+SUBRT: PROCEDURE(X, Y, Z);
+    :
+END SUBRT;
+```

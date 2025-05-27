@@ -1,0 +1,102 @@
+:toc:
+# Do statement
+
+## Description
+
+. Begins a sequence of statements to be executed as a group, possibly to be executed iteratively.
+
+. The `Do` statement begins a sequence to be executed in a group. The group ends with the nonexecutable statement `END`.
+
+. A `DO` group is executed a variable number of times under the control of its `DO` statement.
+
+. A  `DO` statement cannot be used as an ON-unit, but can appear anywhere within a procedure or `BEGIN` block, including `THEN` or `ELSE` clause of an `IF` statement or as an object of a `WHEN` or `OTHERWISE` claure.
+
+## Simple `DO` statement
+
+The simple `DO` statement causes the statements in the `DO` group to be executed one time only. Control may be transferred into a simple `DO` group by a `GOTO` statement, but this should be avoided in structured programming.
+
+```PL/1
+IF C < D THEN DO;
+    PUT LIST('More data needed');
+    GET LIST(VALUE);
+    C = C + VALUE;
+    END;
+```
+
+## `DO WHILE` and `DO UNTIL` statements
+
+The `DO WHILE` statement causes the statements in the `DO`-group to be executed in a loop, provided the condition specified in the test expression is satisfied. When the condition is not `true`, the statement in the `DO`-group are not executed, and control passes to the statement following the `END` statement.
+
+Execution of a `DO WHILE` statement causes the test expression to be evaluated to produce a value `b`, which must be a `bit-string` of length greater than or equal to one.
+
+```PL/1
+DO WHILE(EOF = 0); /* An end of file ON-unit sets EOF = 1 */
+    READ FILE(F) iINTO(REC);
+    END;
+    
+DO UNTIL (B = 1);
+    ARRAY(B) = B;
+    B = B - 1;
+    END;
+
+DO WHILE(EOF = 0) UNTIL(SUBSTR(REC, 1, 6) = 'marker');
+    READ FILE(F) INTO(REC)
+    END;
+```
+
+# `DO` iterative
+
+. The iterative `DO` statement identifies whose value controls the execution of the `DO`-group and defines the conditions under which the control variable is to be modified and tested.
+
+. Execution of an iterative `DO` causes the start, finish and increment expressions, as well as the index reference, to be evaluated in an unspecified order. Once evaluated the finish and increment values are used throughout execution of the group and are not reevaluated. The subscripts pointers, and so on, in the index reference are also not reevaluated.
+
+## Example
+
+```PL/1
+DO K = 1 TO 10;
+    .
+    .
+    .
+END;
+```
+In the example above, the content of the `DO` is executed 10 times, acting as a loop.
+
+```
+DO K = 10 TO 1 BY -1;
+    .
+    .
+    .
+END;
+```
+In the example above, the content of the `DO` is executed 10 times, acting as a loop.
+
+```PL/1
+DO K = 1 TO 1 BY -1
+    .
+    .
+    .
+END;
+```
+In the example above, the content of the `DO` statement is executed once.
+
+```PL/1
+DO K = 1 TO 10 WHILE(B < 0);
+    .
+    .
+    .
+END;
+```
+In the above example, the `DO` group executes 10 times OR until B >= 0, whichever comes first.
+
+## Iterative `DO`
+
+Example of interatives do:
+```PL/1
+J = 10;
+K = 2;
+DO I = 1 TO J BY K;
+
+J = 10;
+K = 2;
+DO I = K * 2 TO K * 5 BY 2;
+```

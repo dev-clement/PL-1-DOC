@@ -1,0 +1,83 @@
+:toc:
+# LIST DIRECTED INPUT-OUTPUT
+
+## GET LIST
+
+The `GET LIST` procedure is used to accept input, each input value must be separated from each other by a blank or even a comma,
+
+### Example of use
+
+`GET LIST(X, Y, Z)` this example state that we fetch three attributes from the user, the procedure named `GET LIST` is called and will fill the variable `X`, `Y` and `Z` with the value coming from the user.
+
+Something to note is that you can call the `GET LIST` in different way for instance:
+
+```PL1
+GET LIST(X, Y, Z);
+```
+
+Or:
+
+```PL1
+GET LIST(X Y Z)
+```
+
+Each call will retrieve value from the input and fill each variable passed as argument to the `GET LIST` procedure.
+
+## PUT LIST
+
+The procedure named `PUT LIST` is used to put a list of element (variables) in a specific stream, this stream can be either a file, a standard output and so on.
+
+This statement can be used to display element in the standard output in order to see the values.
+
+### Example:
+
+```PL1
+DEFINES A = 1;
+DEFINES B = 25;
+DEFINES C = 49;
+DEFINES D = 73
+PUT LIST(A B C D);
+```
+
+In the example above, we are defining 3 variables named `À`, `B`, `C` and `D`. These values can be moved to the stream (output standard) and display those values to the user.
+
+Constants, variables or expressions can be specified as data items.
+
+```PL1
+DEFINES A = 1;
+DEFINES B = 25;
+DEFINES C = 49;
+DEFINES D = 73
+PUT LIST(A, B, 7, A * B);
+```
+
+In the above example, we can see that the `PUT LIST` procedure can take either variables `A` and `B` are variables, constant value `7` and even expression `A * B`.
+
+### Important Commands using `PUT LIST`
+
+#### Skip one line before printing to a stream
+
+```PL1
+PUT SKIP;
+PUT LIST(123);
+```
+This statement is used in order to skip a line onto the output stream in order to `PUT` a list with one element `123`.
+
+#### Skip N lines before printing
+
+```PL1
+PUT SKIP(N);
+PUT LIST(123);
+```
+This `PUT SKIP(N)` will jump onto the stream before doing anything below this statement, in the above example, we can see that this statement will jump N blank lines before displaying the `123`.
+
+#### Start a new page
+
+```PL1
+PUT PAGE LIST('PRINT-NEXT PAGE');
+```
+This procedure `PUT PAGE` is used to create a new page, and by using the `LIST` procedure after that it will create a new page with the content `PRINT-NEXT PAGE`.
+
+
+
+

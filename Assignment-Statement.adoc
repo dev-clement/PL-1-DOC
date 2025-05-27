@@ -1,0 +1,23 @@
+:toc:
+# Assignments statements
+
+`SUM = 30` This assignment will contains 2 attribute, one at the left of the `=` named LHS and one at the right of the `=` named RHS.
+
+The value of the expression RHS is moved to the variable LHS of the symbol `=`.
+
+### Example of PL/1 addition
+
+```PL1
+SUM = X + Y + Z;
+COUNT = COUNT + 1;
+```
+
+PL/1 statements may contains blanks as needed to improve the readability of the program. Statement can also be continued across several lines. And one line can contain several PL/1 statements.
+
+### Example of several statements inline.
+
+```PL1
+GET LIST(X Y Z); SUM = X + Y + Z;
+```
+In the above example, we can see that there is two statements (one statement is ending with a `;`) we can add as many as statements as there is in one line until the end of the content.
+

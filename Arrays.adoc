@@ -1,0 +1,147 @@
+:toc:
+# Arrays
+
+An array is a table of data in which each items has the same attribute as every other item in the array.
+
+An array has storage reserved for it by means of a `DECLARE` or `DCL` statement.
+
+## Example:
+
+```PL/1
+DCL TEMPERATURES (365) FIXED DEC(4, 1);
+```
+
+In the above example, we are declaring an array named `TEMPERATURES` of 365 indexes of `FIEXED DEC`.
+
+## Bounds
+
+. Array's bounds is used for declaring the size of an array
+
+. In the above example, 365 is the upper bound, lower bound is assumed to be 1.
+
+### Bounds example
+
+```PL/1
+DCL GRAPH(-5: +5) FLOAT DEC(6);
+```
+
+In the above example, `-5` is the array's lower bound and `+5` result in the upper bound of it.
+
+## Arrays dimensions
+
+The number offsets of upper and lower bounds specifies the numberof dimensions in the array.
+
+### Example
+
+```PL/1
+DCL TABLE(6, 2) FIXED DEC(5);
+```
+The above example is representing a 2 dimensional array. The array named `TEMPERATURES` is an array with only one dimension. Difference is the number of value and their separators, each separator represent a dimension.
+
+In the above example, `6` is the first dimension of the array, which is the rows, and `2` is the number of columns of the array being another dimension.
+
+```PL/1
+DCL POPULATION(2, 30, 10) FLOAT DEC(6);
+```
+
+The above example represents an array named `DIMENSION` with 3 dimensions. The maximum number of dimensions generally allowed is `5`.
+
+## Subscripts
+
+. A subscript is used to reference an element of an array.
+
+. It may be constants, variables or even expressions.
+
+### Example
+
+```PL/1
+T = TEMPERATURE(2);
+```
+
+In the example above, `T` is a subscripts of the value of `TEMPERATURE` at index `2`.
+
+```PL/1
+K = 3; T = TEMPERATURE(5);
+```
+
+In the example above, `T` is a subscript that points to the value of of the `K` element inside of the `TEMPERATURE` array.
+
+```PL/1
+T = TEMPERATURE(k + 1);
+```
+
+In the above example, the `T` variables is the subscript of the `TEMPERATURE` at `k + 1`.
+
+## Built-ins functions for an array
+
+### DIMENSION abreviate to DIM
+
+The DIMENSION function returns an integer that is the number of elements in the specified dimension of an array `x`. This is useful for arrays with * extents. `n` is an optional integer constant indicating the _nth_ dimension of _x_. If `n` is not specified, the first dimension is assumed. The resulting binary integer gives te number of elements in the _nth_ dimension of `x`. 
+
+#### Syntax
+
+```PL/1
+DIMENSION(x[, n]);
+```
+
+#### Parameters
+
+`x` is an array and `n` is an integer constant greater than zero that indicates the dimension of the array.
+
+### LBOUND
+
+Returns a fixed binary integer value giving the lower bound of the specified dimension of an array.
+
+`LBOUND` function returns an integer value that gives the lower bound of the _nth_ dimension of `x`.
+
+#### Syntax
+
+```PL/1
+LBOUND(x[, n])
+```
+
+#### Parameters
+
+`x` is an array variable and `n` is an integer constant indicating the dimensions of `x`.
+
+### HBOUND
+
+Returns a fixed-point binary integer that is the upper bound of a specified dimension of an array.
+
+The `HBOUND` function returns a fixed-point binary integer is the upper bound of a specified dimension of an array `x`. 
+
+This allows you to determine the upper bound of an array with * extents. `n` os tje specified dimension of the array. If `n` is not present, 1 is assumed. When present, `n` must be greater than 0 and less than or equal to the number of dimensions declared.
+
+#### Syntax
+
+```PL/1
+HBOUND(x[, n]);
+```
+
+#### Parameters
+
+`x` is an array variable and `n` is an integer constant indicating the _nth_ dimension of `x`.
+
+### SUM
+
+The `SUM` function returns the sum of all the elements in the array. If the elements of the array are strings, they are converted to fixed-point values. If they are neither fixed-point values nor strings, they are converted to floating-point values. In the latter case, the result is a floating-point value; otherwise, it is a fixed-point value.
+
+#### Syntax
+
+SUM(x)
+
+#### Parameters
+
+`x` is an array expression.
+
+### PROD
+
+The `PROD` fuunction returns the product of all the elements of the array. If the elements of `x` are strings, they are converted to fixed-point values. If they are neither fixed-point values nor strings, they are converted to floating-point values. In the latter case, the result is a floating-point value; otherwse it is a fixed-point value.
+
+#### Syntax
+
+PROD(x);
+
+#### Parameters
+
+`x` is an array expression.
